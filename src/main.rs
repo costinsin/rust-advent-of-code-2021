@@ -25,6 +25,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     match challenge {
         1 => challenges::day1::part2(&mut input_file)?,
+        2 => challenges::day2::part2(&mut input_file)?,
         _ => (),
     }
 
