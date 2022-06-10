@@ -1,10 +1,6 @@
-use std::{error::Error, fs::File, io::Read};
+use std::error::Error;
 
-#[allow(dead_code)]
-pub fn part1(input_file: &mut File) -> Result<(), Box<dyn Error>> {
-    let mut file_content = String::new();
-    input_file.read_to_string(&mut file_content)?;
-
+pub fn part1(file_content: &String) -> Result<(), Box<dyn Error>> {
     let lines: Vec<(&str, &str)> = file_content
         .split("\n")
         .map(|e| {
@@ -30,10 +26,7 @@ pub fn part1(input_file: &mut File) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-pub fn part2(input_file: &mut File) -> Result<(), Box<dyn Error>> {
-    let mut file_content = String::new();
-    input_file.read_to_string(&mut file_content)?;
-
+pub fn part2(file_content: &String) -> Result<(), Box<dyn Error>> {
     let lines: Vec<(&str, &str)> = file_content
         .split("\n")
         .map(|e| {

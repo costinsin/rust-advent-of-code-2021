@@ -1,4 +1,8 @@
-use std::{error::Error, fs::File, io::stdin};
+use std::{
+    error::Error,
+    fs::File,
+    io::{stdin, Read},
+};
 mod challenges;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -10,11 +14,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let path = format!("src/input/day{}.in", line.trim());
 
-    let mut input_file;
+    drop(line);
+
+    let mut file_content = String::new();
 
     match File::open(path.clone()) {
-        Ok(open_file) => {
-            input_file = open_file;
+        Ok(mut open_file) => {
+            open_file.read_to_string(&mut file_content)?;
             println!("Input file used: {}", path);
         }
         Err(err) => {
@@ -24,8 +30,18 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
 
     match challenge {
-        1 => challenges::day1::part2(&mut input_file)?,
-        2 => challenges::day2::part2(&mut input_file)?,
+        1 => {
+            println!("Part 1:");
+            challenges::day1::part1(&file_content)?;
+            println!("Part 2:");
+            challenges::day1::part2(&file_content)?;
+        }
+        2 => {
+            println!("Part 1:");
+            challenges::day2::part1(&file_content)?;
+            println!("Part 2:");
+            challenges::day2::part2(&file_content)?;
+        }
         _ => (),
     }
 
