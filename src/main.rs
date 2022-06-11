@@ -60,6 +60,12 @@ fn main() -> Result<(), Box<dyn Error>> {
             println!("Part 2:");
             challenges::day5::part2(&file_content)?;
         }
+        6 => {
+            println!("Part 1:");
+            challenges::day6::part1(&file_content)?;
+            println!("Part 2:");
+            challenges::day6::part2(&file_content)?;
+        }
         _ => (),
     }
 
